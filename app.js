@@ -1,77 +1,88 @@
 console.log("Working..."); 
 
+  
+  
+  class MyShip {
+    constructor()
+    {
+      this.hull = 100;
+      this.firepower = Math.floor(Math.random() * (10 - 0) + 0);
+      this.accuracy = 0.8;
+    }
 
-class gameManager{
-    constructor(){
-  this.turn = false;
-  
-    }
-  }
-  
-  
-  class ussSwarch {
-  constructor(){
-  
-   const hull= 20;
-    const firepower= 5;
-    const accuracy= .7;
+    attack(alienShip) 
+    {
+      console.log("Attacking.."); 
+      alienShip.hull -= this.firepower; 
+      console.log(`The Alien ship now has ${alienShip.hull} health remaining.`); 
     }
   
-   ussAttack (alienShip){
-    console.log("inside attack func firepower is : " + this.firepower);
-  
-  
-  
-    alienShip.hull = alienShip.hull - this.firepower;
-  
-    console.log("inside attack func alienship hull is now  : " + alienShip.hull);
-   // return remain;
   }
   
   
-  }
-  
-  
-  class alienShips {
-    constructor(){
-  
-    const maxHull= 6;
-    const minHull =3;
-  
-    const maxFirepower=4;
-    const minFirepower=2;
-  
-    const maxAccuracy=.6;
-    const minAccuracy=.8;
-  
-    this.hull= getRandomIntInclusive( minHull ,maxHull);
-    console.log("haul is " + this.hull)
-    this.firepower= getRandomIntInclusive(minFirepower, maxFirepower);
-    console.log("firepower is " + this.firepower)
-    this.accuracy= getRandomIntInclusive(minAccuracy, maxAccuracy);
-    console.log("accuracy is "+ this.accuracy)
+  class AlienShips {
+    constructor() 
+    {
+      this.hull = 100 ;
+      this.firepower = Math.floor(Math.random() * (10 - 0) + 0);
+      this.accuracy = 0.8;   
     }
+
+
+    attack(myShip) 
+    {
+      console.log("Enemy Attacking.."); 
+      myShip.hull -= this.firepower; 
+      console.log(`You now have ${myShip.hull} health remaining.`); 
+    }
+
   }
+
+  const alienShip1 = new AlienShips();
+  const alienShip2 = new AlienShips();
+  const alienShip3 = new AlienShips();
+  const alienShip4 = new AlienShips();
+  const alienShip5 = new AlienShips();
+  const alienShip6 = new AlienShips();
   
-  
-  
-  function getRandomIntInclusive(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+  const milleniumFalcon = new MyShip();
+
+  let enemyShips = [alienShip1, alienShip2, alienShip3, alienShip4, alienShip5, alienShip6]; 
+
+
+
+  let battle = () => {
+      //let hitOrMiss = Math.floor(Math.random() * (1 - 0) + 0);
+      milleniumFalcon.firepower = Math.floor(Math.random() * (10 - 0) + 0); 
+      //if(hitOrMiss < milleniumFalcon.accuracy || milleniumFalcon.firepower != 0)
+   //   {
+        console.log("Attacking.."); 
+        console.log(`You did ${milleniumFalcon.firepower} damage.`)
+        alienShip1.hull -= milleniumFalcon.firepower; 
+        console.log(`The Alien ship now has ${alienShip1.hull} health remaining.`); 
+ //     }
+
+  //    else console.log("You took aim and you missed!");
+      
+      alienShip1.firepower = Math.floor(Math.random() * (10 - 0) + 0); 
+      console.log("Enemy Attacking..", alienShip1.firepower); 
+      console.log(`Enemy inflicted ${alienShip1.firepower} damage.`)
+      milleniumFalcon.hull -= alienShip1.firepower; 
+      console.log(`You now have ${milleniumFalcon.hull} health remaining.`); '\n \n \n';
+
+
+      console.log(`Health: ${milleniumFalcon.hull} \n Enemy Health: ${alienShip1.hull}`);
+
+      if(alienShip1.hull <= 0 ) 
+      { 
+
+        console.log("You destroyed the enemy ship!"); 
       }
+      else if(milleniumFalcon.hull <= 0) console.log("Your ship was destroyed..Try Again!")
+    
+  
+  }
+  
+
   
   
-  let alienShip1 = new alienShips();
-  let alienShip2 = new alienShips();
-  let alienShip3 = new alienShips();
-  let alienShip4 = new alienShips();
-  let alienShip5 = new alienShips();
-  let alienShip6 = new alienShips();
-  
-  let ussSwarch1 = new ussSwarch();
-  
-  console.log(ussSwarch1.ussAttack(alienShip1));
-  
-  
-  console.log("this is working")
